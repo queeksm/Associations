@@ -13,8 +13,12 @@
 ActiveRecord::Schema.define(version: 2020_06_11_192950) do
 
   create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "creator_id"
   end
 
   create_table "users", force: :cascade do |t|

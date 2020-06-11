@@ -10,8 +10,13 @@
   </head>
 
   <body>
-    <%= session[:user_id] %>
-    <%= session[:username] %>
+  <% if current_user %>
+    Logged in as <%= current_user.username %>.
+  <%= link_to "Log Out", logout_path %>
+  <% else %>
+    <%= link_to "Sign Up", signup_path %> or 
+    <%= link_to "Log In", login_path %>
+  <% end %>
     <%= yield %>
   </body>
 </html>

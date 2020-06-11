@@ -23,4 +23,10 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<% if !current_user %>
+  <%= link_to 'New User', new_user_path %>
+<% else %>
+  <%= link_to 'New Event', new_event_path %>
+<% end %>
+
+ <%= link_to 'Events List', events_path %>

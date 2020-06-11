@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 <p><%= @users.username %></p>
-<p><%= @users.id %></p>
+<h1>EVENTS</h1>
+<% @users.events.each do |ev| %>
+ <div>
+ <strong><%= ev.name %> </strong>
+ <span><%= ev.location %> </span>
+ <span><%= ev.date %> </span>
+ </div>
+<% end %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
