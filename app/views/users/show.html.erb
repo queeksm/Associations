@@ -1,7 +1,16 @@
 <p id="notice"><%= notice %></p>
 <p><%= @users.username %></p>
-<h1>EVENTS</h1>
+<h1>CREATED EVENTS</h1>
 <% @users.events.each do |ev| %>
+ <div>
+ <strong><%= ev.name %> </strong>
+ <span><%= ev.location %> </span>
+ <span><%= ev.date %> </span>
+ </div>
+<% end %>
+
+<h1>Events to Attend</h1>
+<% @users.attend.each do |ev| %>
  <div>
  <strong><%= ev.name %> </strong>
  <span><%= ev.location %> </span>

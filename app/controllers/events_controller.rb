@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user, except: [:index,:show]
+
   # GET /events
   # GET /events.json
   def index
@@ -9,7 +11,13 @@ class EventsController < ApplicationController
 
   # GET /events/1
   # GET /events/1.json
-  def show
+  def show    
+  end 
+
+  def attend
+    respond_to do |format|
+      flash.now[:alert] = "ATTTTEEEENDDDDD"
+    end
   end
 
   # GET /events/new

@@ -4,7 +4,12 @@
         <td><%= @event.name %></td>
         <td><%= @event.location %></td>
         <td><%= @event.date %></td>
-        </tr>
+        <% @event.atendees.each do |at| %>
+          <div>
+          <strong><%= at.username %> </strong>          
+          </div>
+        <% end %>
+</tr>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

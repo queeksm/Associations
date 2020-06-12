@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
         @current_user = nil
       end
     end
+
+    def authenticate_user
+      if session[:user_id] == nil
+        flash[:notice] = "You need to be logged in to perform this action"
+        redirect_to root_url
+      end
+      
+    end
 end
