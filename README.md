@@ -46,4 +46,4 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
- - Project from Microverse. [click here](https://www.theodinproject.com/courses/ruby-on-rails/lessons/authentication) for the original specifications.
+ - Project from Microverse. [click here](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations) for the original specifications.
