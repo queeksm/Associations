@@ -14,10 +14,7 @@ class EventsController < ApplicationController
   def show    
   end 
 
-  def attend
-    respond_to do |format|
-      flash.now[:alert] = "ATTTTEEEENDDDDD"
-    end
+  def attend   
   end
 
   # GET /events/new
