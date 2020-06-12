@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
-  get 'events', to: 'event#attend', as: 'attend'
+  get 'attend/:id', to: 'events#attend', as: 'attendy'
 end
