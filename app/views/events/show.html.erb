@@ -4,6 +4,7 @@
         <td><%= @event.name %></td>
         <td><%= @event.location %></td>
         <td><%= @event.date %></td>
+        <h1>Atendees</h1>
         <% @event.atendees.each do |at| %>
           <div>
           <strong><%= at.username %> </strong>          

@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <td>EVENT STATUS</td>
       <td>EVENT NAME</td>
       <td>EVENT LOCATION</td>
       <td>EVENT DATE</td>
@@ -16,6 +17,11 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
+        <% if event.date >= Time.now %>
+          <td>Incoming event</td>
+        <% else %> 
+          <td>Passed event</td>
+        <% end %>
         <td><%= event.name %></td>
         <td><%= event.location %></td>
         <td><%= event.date %></td>
