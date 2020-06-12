@@ -15,9 +15,17 @@ class EventsController < ApplicationController
   end 
 
   def attend
-    respond_to do |format|
-      flash.now[:alert] = "ATTTTEEEENDDDDD"
+    set_event
+    user = User.find_by_username(session[:username])
+    ae = user.attended_events.build
+    ae.event = @event
+    if !AttendedEvent.where(user_id: user.id, event_id: params[:id]).first
+      ae.save
+      flash[:notice] = "User #{user.username} added to attend #{@event.name}"
+    else
+      flash[:notice] = "User #{user.username} already attending to this event!"
     end
+    redirect_to @event
   end
 
   # GET /events/new

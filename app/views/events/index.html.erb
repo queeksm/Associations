@@ -20,13 +20,14 @@
         <td><%= event.location %></td>
         <td><%= event.date %></td>
         <td><%= event.creator.username %></td>
+
         <td><%= link_to 'Show', event %></td>
         <% if current_user && current_user.username == event.creator.username %>
        
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>        
         <%end%>
-        <td><%= link_to 'Show', event, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Atend', attendy_path(event) %></td>
       </tr>
     <% end %>
   </tbody>
