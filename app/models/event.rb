@@ -4,5 +4,5 @@ class Event < ApplicationRecord
   has_many :atendees, through: :attended_events, source: :user
 
   scope :previous, -> { where('date < ?', Date.today) }
-  scope :upcoming, -> { where('date >= ?', Date.today) }  
+  scope :upcoming, -> { where('date >= ?', Date.today) }
 end
