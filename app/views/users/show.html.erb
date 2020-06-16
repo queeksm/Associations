@@ -8,6 +8,8 @@
  <span><%= ev.date %> </span>
  </div>
 <% end %>
+<br>
+<br>
 
 <table>
   <thead>
@@ -37,6 +39,25 @@
     <% end %>
   </tbody>
 </table>
+
+
+<h1>Past events</h1>
+<% @prev_events.each do |event|%>
+<div>
+<span> Creator: <%= event.creator.username %> </span><br>
+<span> Event Name: <%= event.name %></span> <br>
+<span> Event Date: <%= event.date %> </span> 
+</div><br>
+<% end %>
+
+<h1>Future events</h1>
+<% @next_events.each do |event|%>
+<div>
+<span> Creator: <%= event.creator.username %> </span><br>
+<span> Event Name: <%= event.name %></span> <br>
+<span> Event Date: <%= event.date %> </span> 
+</div><br>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

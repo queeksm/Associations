@@ -1,12 +1,14 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[show edit update destroy]
+  before_action :set_event, only: %i[show edit update destroy attend]
 
   before_action :authenticate_user, except: %i[index show]
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.all    
+    @next_events = Event.upcoming
+    @prev_events = Event.previous
   end
 
   # GET /events/1
@@ -14,12 +16,9 @@ class EventsController < ApplicationController
   def show; end
 
   def attend
-    set_event
     user = User.find_by_username(session[:username])
-    ae = user.attended_events.build
-    ae.event = @event
-    if !AttendedEvent.where(user_id: user.id, event_id: params[:id]).first
-      ae.save
+    if !user.already_attend?(@event)
+      user.attended_events.build(event_id: @event.id).save
       flash[:notice] = "User #{user.username} added to attend #{@event.name}"
     else
       flash[:notice] = "User #{user.username} already attending to this event!"
