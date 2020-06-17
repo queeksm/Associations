@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'New_event', type: :feature do
-  before {
-    user = User.create(username: 'tester_user')
+  before do
+    User.create(username: 'tester_user')
     visit 'http://localhost:3000/login'
     fill_in 'username', with: 'tester_user'
     click_on 'Login'
-  }
+  end
 
   scenario 'create an event' do
     visit 'http://localhost:3000/events/new'
