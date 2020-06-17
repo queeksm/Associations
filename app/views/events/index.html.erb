@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>EVENT STATUS</td>
+      <td>EVENT NAME</td>
+      <td>EVENT LOCATION</td>
+      <td>EVENT DATE</td>
+      <td>CREATOR USERNAME</td>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <% if event.date >= Time.now %>
+          <td>Incoming event</td>
+        <% else %> 
+          <td>Passed event</td>
+        <% end %>
+        <td><%= event.name %></td>
+        <td><%= event.location %></td>
+        <td><%= event.date %></td>
+        <td><%= event.creator.username %></td>
+
+        <td><%= link_to 'Show', event %></td>
+        <% if current_user && current_user.username == event.creator.username %>
+       
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+        <td><%= link_to 'Atend', attendy_path(event) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Past events</h1>
+<% @prev_events.each do |event|%>
+<div>
+<span> Creator: <%= event.creator.username %> </span><br>
+<span> Event Name: <%= event.name %></span> <br>
+<span> Event Date: <%= event.date %> </span> 
+</div><br>
+<% end %>
+
+<h1>Future events</h1>
+<% @next_events.each do |event|%>
+<div>
+<span> Creator: <%= event.creator.username %> </span><br>
+<span> Event Name: <%= event.name %></span> <br>
+<span> Event Date: <%= event.date %> </span> 
+</div><br>
+<% end %>
+
+<br>
+<% if !current_user %>
+  <%= link_to 'New User', new_user_path %>
+<% else %>
+  <%= link_to 'New Event', new_event_path %>
+<% end %>
+
+ <%= link_to 'User List', users_path %>
