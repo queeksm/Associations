@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
-<p><%= @users.username %></p>
+<p><%= @user.username %></p>
 <h1>CREATED EVENTS</h1>
-<% @users.events.each do |ev| %>
+<% @user.events.each do |ev| %>
  <div>
  <strong><%= ev.name %> </strong>
  <span><%= ev.location %> </span>
@@ -24,7 +24,7 @@
   </thead>
 
   <tbody>
-    <% @users.attend.each do |event| %>
+    <% @user.attend.each do |event| %>
       <tr>
         <% if event.date >= Time.now %>
           <td>Incoming event</td>

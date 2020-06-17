@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   def show; end
 
   def attend
-    user = User.find_by_username(session[:username])
+    user = current_user
     if !user.already_attend?(@event)
       user.attended_events.build(event_id: @event.id).save
       flash[:notice] = "User #{user.username} added to attend #{@event.name}"
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    user = User.find_by_username(session[:username])
+    user = current_user
     @event = user.events.build
   end
 
